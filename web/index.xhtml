@@ -21,9 +21,15 @@
                #{users.pass}
            </h:column>
            <h:column>
+               <f:facet name="header">Delete</f:facet>
                <h:form>
-                   <f:facet name="header">Delete</f:facet>
                    <h:commandButton value="Delete" action="#{mybean.deleteUserById(users.id)}" />
+               </h:form>
+           </h:column>
+           <h:column>
+               <f:facet name="header">Edit</f:facet>
+               <h:form>
+                   <h:commandButton value="Edit" action="#{mybean.editUserById(users.id)}" />
                </h:form>
            </h:column>
        </h:dataTable>

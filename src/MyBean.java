@@ -37,6 +37,19 @@ public class MyBean {
         return null;
     }
 
+    public boolean editUserById(int id) {
+        System.out.println(id);
+        Session session = Main.getSession();
+        Transaction t = session.beginTransaction();
+        UserEntity usertoedit = (UserEntity) session.load(UserEntity.class, id);
+        usertoedit.setEmail("Esited");
+        usertoedit.setPass("Edited");
+        session.update(usertoedit);
+        t.commit();
+        session.close();
+        System.out.println("End Tk Chala");
+        return false;
+    }
     public boolean deleteUserById(int id) {
         System.out.println(id);
         Session session = Main.getSession();
