@@ -1,9 +1,11 @@
 import model.UserEntity;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import java.io.Serializable;
 import java.util.List;
 
 @ManagedBean(name = "mybean")
@@ -13,15 +15,7 @@ public class MyBean {
     private List<UserEntity> l;
 
     public void fillTaable(){
-        Transaction t = null;
-        Session s = Main.getSession();
-        t = s.beginTransaction();
-        l = s.createQuery("from UserEntity").list();
-        t.commit();
-        s.close();
-        for (int i=0;i<l.size();i++){
-            System.out.println(l.get(i).getEmail());
-        }
+
     }
     public String auth(){
         if(user.getPassword()!=null && user.getPassword()!=null){
@@ -43,12 +37,30 @@ public class MyBean {
         return null;
     }
 
-    public List<UserEntity> getL() {
-        return l;
+    public boolean deleteUserById(int id) {
+        System.out.println(id);
+        Session session = Main.getSession();
+        Transaction t = session.beginTransaction();
+        UserEntity usertoDel = (UserEntity) session.load(UserEntity.class, id);
+        session.delete(usertoDel);
+        t.commit();
+        session.close();
+        System.out.println("End Tk Chala");
+            return false;
     }
 
     public void setL(List<UserEntity> l) {
         this.l = l;
+    }
+
+    public List<UserEntity> getL() {
+        Transaction t = null;
+        Session s = Main.getSession();
+        t = s.beginTransaction();
+        l = s.createQuery("from UserEntity").list();
+        t.commit();
+        s.close();
+        return l;
     }
 
     public UserBackingBean getUser() {

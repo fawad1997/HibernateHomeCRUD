@@ -20,6 +20,12 @@
                <f:facet name="header">Password</f:facet>
                #{users.pass}
            </h:column>
+           <h:column>
+               <h:form>
+                   <f:facet name="header">Delete</f:facet>
+                   <h:commandButton value="Delete" action="#{mybean.deleteUserById(users.id)}" />
+               </h:form>
+           </h:column>
        </h:dataTable>
    </f:view>
 </html>
