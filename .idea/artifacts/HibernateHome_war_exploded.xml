@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="HibernateHome:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/HibernateHome_war_exploded.war</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="HibernateHome/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="HibernateHome" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Hibernate" />
+          <element id="library" level="project" name="mysql-connector-java-5.1.45-bin" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
